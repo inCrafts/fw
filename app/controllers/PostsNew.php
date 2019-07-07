@@ -1,7 +1,9 @@
 <?php
 
+namespace app\controllers;
 
-class PostsNew {
+
+class PostsNew extends \vendor\core\base\Controller {
 
     public function indexAction() {
 
@@ -23,5 +25,4 @@ class PostsNew {
         echo 'PostsNew::before';
 
     }
-
 }
