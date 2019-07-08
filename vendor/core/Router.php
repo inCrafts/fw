@@ -7,11 +7,6 @@ namespace vendor\core;
  */
 class Router {
 
-//    public function __construct() {
-//
-//        echo 'Привет!';
-//
-//    }
     /**
      *   Таблица маршрутов
      * @var array
@@ -22,7 +17,6 @@ class Router {
      * @var array
      */
     protected static $route = [];
-    //  в случае совпадения по регурярному выражэеннию выражению в виде ключа
 
     /**
      *   Добавляет текущий маршрут в таблицу маршрутов
@@ -58,7 +52,6 @@ class Router {
 
         foreach( self::$routes as $pattern => $route ) {
             if ( preg_match( "#$pattern#i", $url, $matches )) {
-//                debug( $matches );
                 foreach ( $matches as $key => $val ) {
                     if ( is_string( $key )) {
                         $route[$key] = $val;
@@ -83,15 +76,15 @@ class Router {
      */
     public static function dispatch( $url ) {
         $url = self::removeQueryString($url);
-        var_dump($url);
         if ( self::matchRoute( $url )) {
-            $controller = 'app\controllers\\' . self::upperCamelCase( self::$route['controller'] );
+            $controller = 'app\controllers\\' . self::upperCamelCase( self::$route['controller'] . 'Controller' );
             if ( class_exists( $controller )) {
                 $cObj = new $controller( self::$route );
 
                 $action = self::lowerCamelCase( self::$route['action'] ) . 'Action';
                 if ( method_exists( $cObj, $action ) ) {
                     $cObj->$action();
+                    $cObj->getView();
                 } else {
                     echo "Метод <b>$controller::$action</b> не найден.";
                 }

@@ -4,10 +4,10 @@
 namespace app\controllers;
 
 /**
- * Class Page  Описание страницы
+ * Class PageController  Описание страницы
  * @package app\controllers
  */
-class Page extends \vendor\core\base\Controller {
+class PageController extends AppController {
 
     public function viewAction() {
 

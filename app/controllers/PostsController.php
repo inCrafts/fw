@@ -2,8 +2,11 @@
 
 namespace app\controllers;
 
-
-class Posts extends \vendor\core\base\Controller {
+/**
+ * Class PostsController
+ * @package app\controllers
+ */
+class PostsController extends AppController {
 
     public function indexAction() {
 
