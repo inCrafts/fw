@@ -16,9 +16,14 @@ class MainController extends AppController {
       // $this->layout = false;       // Для отключения шаблона
 
         $model = new Main();
-//        $res = $model->query( "CREATE TABLE posts");
         $posts = $model->findAll();
-        $posts2 = $model->findAll();
+//        $posts2 = $model->findAll();
+//        $post = $model->findOne('Рыбный текст', 'title' );
+//        $data = $model->findBySql("SELECT * FROM posts ORDER BY id DESC LIMIT 2");
+//        $data = $model->findBySql("SELECT * FROM {$model->table} WHERE title LIKE ?", ['%во%']);
+        $data = $model->findLike('ыб', 'title');
+        debug($data);
+//        debug($post);
         $title = 'Main layout';
         $this->set( compact('title', 'posts' ));
     }
